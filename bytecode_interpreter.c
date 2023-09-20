@@ -62,14 +62,14 @@ int main(int argc, char *argv[])
 			else
 			{
 				free_dlist(&h);
-				printf("L%d: unknown instruction %s\n", line, token);
+				printf("L%d: unknown instruction %s\n", line_num, token);
 				exit(EXIT_FAILURE);
 			}
 		}
 		line_num++;
 		token = strtok(NULL, "\n\t\a\r ;:");
 	}
-	free_dlist(&h), free(buffer);
+	free_dlist(&h), free(buff);
 	close(file_desc);
 	return (0);
 }

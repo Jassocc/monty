@@ -17,7 +17,7 @@ void pchar(stack_t **h, unsigned int line_number)
 	}
 	else
 	{
-		printf("L%u: can't pchar, value out of range\m", line_number);
+		printf("L%u: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
