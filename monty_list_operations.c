@@ -9,7 +9,7 @@ int add_end_node(stack_t **h, int n)
 {
 	stack_t *newer;
 
-	if(!h)
+	if (!h)
 	{
 		return (-1);
 	}

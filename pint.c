@@ -2,7 +2,7 @@
 /**
  * pint - print top node
  * @h: head
- * @line_number
+ * @line_number: bytecode
  */
 void pint(stack_t **h, unsigned int line_number)
 {

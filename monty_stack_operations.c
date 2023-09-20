@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/***
+/**
  * is_num - iterates each chars of string
  * @num: integer
  * Return: 0 if num, -1 if not
@@ -25,7 +25,7 @@ int is_num(const char *num)
 /**
  * push - adds node
  * @h: head of linked list
- * @line_number - bytecode line number
+ * @line_number: bytecode line number
  * @n: integer
  */
 void push(stack_t **h, unsigned int line_number, const char *n)
