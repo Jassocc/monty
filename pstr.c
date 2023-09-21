@@ -9,11 +9,7 @@ void pstr(stack_t **h, unsigned int line_number)
 {
 	stack_t *temp;
 
-	if (!h || !*h)
-	{
-		fprintf(stderr, "L%u: can't pstr, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	(void) line_number;
 	temp = *h;
 	while ((temp != NULL) && (temp->n != 0) &&
 			(temp->n >= 0) && (temp->n < 128))
