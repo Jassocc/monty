@@ -71,17 +71,21 @@ void push(stack_t **h, unsigned int line_number)
  */
 void pop(stack_t **h, unsigned int line_number)
 {
-	if (h == NULL || *h == NULL)
+	stack_t *temp;
+
+	if (*h == NULL)
 	{
 		/* print error message if the stack is empty*/
-		printf("L%u: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		/* free doubly linked list*/
 		free_dlist(h);
 		exit(EXIT_FAILURE);
 	}
-	else
+	temp = *h;
+	*h = temp->next;
+	if (*h)
 	{
-		/* delete the last node of the doubly linked list*/
-		delete_end_node(h);
+		(*h)->prev = NULL;
 	}
+	free(temp);
 }
