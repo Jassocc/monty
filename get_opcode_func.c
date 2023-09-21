@@ -5,7 +5,7 @@
  * @token1: 1st bytecode input (opcode)
  * Return: pointer to correct operation function
  */
-void (*get_op_func(char *token1))(stack_t **stack, unsigned int line_number)
+void get_op_func(stack_t **stack, char *opcode,  unsigned int line_number)
 {
 	instruction_t instruction_s[] = {
 		{"pop", pop},
@@ -22,15 +22,24 @@ void (*get_op_func(char *token1))(stack_t **stack, unsigned int line_number)
 		{"nop", nop},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"push", push},
 		{NULL, NULL}
 	};
 	int i = 0;
 
-	while (instruction_s[i].f != NULL)
+	while (instruction_s[i].opcode != NULL)
 	{
-		if (strcmp(token1, instruction_s[i].opcode) == 0)
-			return (instruction_s[i].f);
+		if (strcmp(opcode, instruction_s[i].opcode) == 0)
+		{
+			instruction_s[i].f(stack, line_number);
+			return;
+		}
 		i++;
 	}
-	return (NULL);
+	if (instruction_s[i].opcode == NULL)
+	{
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		free_dlist(stack);
+		exit(EXIT_FAILURE);
+	}
 }

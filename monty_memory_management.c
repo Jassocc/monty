@@ -5,14 +5,14 @@
  */
 void free_dlist(stack_t **h)
 {
-	if (!h)
+	stack_t *temp, *n;
+
+	temp = *h;
+	while (temp)
 	{
-		return;
+		n = temp->next;
+		free(temp);
+		temp = n;
 	}
-	while (*h && (*h)->next)
-	{
-		*h = (*h)->next;
-		free((*h)->prev);
-	}
-	free(*h);
+	*h = NULL;
 }

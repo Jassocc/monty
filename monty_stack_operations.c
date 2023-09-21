@@ -9,18 +9,18 @@ int is_num(const char *num)
 {
 	int j = 0;
 
-	if (*num == '-')
+	if (num[0] == '-')
 	{
 		j = 1;
 	}
-	for (; *(num + j) != '\0'; j++)
+	for (; num[j] != '\0'; j++)
 	{
-		if (isdigit(*(num + j)) == 0)
+		if (!isdigit(num[j]))
 		{
-			return (-1);
+			return (0);
 		}
 	}
-	return (0);
+	return (1);
 }
 /**
  * push - adds node
@@ -28,29 +28,48 @@ int is_num(const char *num)
  * @line_number: bytecode line number
  * @n: integer
  */
-void push(stack_t **h, unsigned int line_number, const char *n)
+void push(stack_t **h, unsigned int line_number)
 {
-	if (!h)
+	int value;
+	stack_t *new_node;
+	char *arg = strtok(NULL, " \t\n");
+
+	if (!arg || !is_num(arg))
 	{
-		return;
-	}
-	if (is_num(n) == -1)
-	{
-		/* print error message if input is not a valid number*/
-		printf("L%u: usage: push integer\n", line_number);
-		/* free doubly linked list*/
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_dlist(h);
 		exit(EXIT_FAILURE);
 	}
+	value = atoi(arg);
+	new_node = malloc(sizeof(stack_t));
+	if (!new_node)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_dlist(h);
+		exit(EXIT_FAILURE);
+	}
+	new_node->n = value;
+	new_node->prev = NULL;
+	if (*h)
+	{
+		new_node->next = *h;
+		(*h)->prev = new_node;
+	}
 	else
 	{
-		/*add the new node to the end of the doublt linked list*/
-		if (add_end_node(h, atoi(n)) == -1)
-		{
-			free_dlist(h);
-			exit(EXIT_FAILURE);
-		}
+		new_node->next = NULL;
 	}
+	*h = new_node;
+}
+/**
+ * push_adapter - calls push with correct args
+ * @stack: stack
+ * @line_number: number of line
+ * @arg: argument
+ */
+void push_adapter(stack_t **stack, unsigned int line_number)
+{
+	push(stack, line_number);
 }
 /**
  * pop - removes node at front

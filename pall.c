@@ -6,15 +6,11 @@
  */
 void pall(stack_t **h, unsigned int line_number)
 {
-	stack_t *temp = NULL;
+	stack_t *temp = *h;
 
-	if (!h || !*h)
-	{
-		return;
-	}
 	(void) line_number;
-	temp = *h;
-	while (temp != NULL)
+
+	while (temp)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;

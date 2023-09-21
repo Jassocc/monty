@@ -42,8 +42,8 @@ typedef struct instruction_s
 } instruction_t;
 
 /* prototypes for the opcodes */
-void (*get_op_func(char *token1))(stack_t **stack, unsigned int line_number);
-void push(stack_t **h, unsigned int line_number, const char *n);
+void get_op_func(stack_t **stack, char *opcode, unsigned int line_number);
+void push(stack_t **h, unsigned int line_number);
 void pop(stack_t **h, unsigned int line_number);
 void pint(stack_t **h, unsigned int line_number);
 void pall(stack_t **h, unsigned int line_number);
@@ -65,5 +65,6 @@ void _mod(stack_t **h, unsigned int line_number);
 int add_end_node(stack_t **h, int n);
 void delete_end_node(stack_t **h);
 void free_dlist(stack_t **h);
+void push_adapter(stack_t **stack, unsigned int line_number);
 
 #endif
