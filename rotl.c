@@ -9,17 +9,14 @@ void rotl(stack_t **h, unsigned int line_number)
 {
 	stack_t *tmp;
 
-	(void) line_number;
+	(void)line_number;
 
-	if ((*h)->next != NULL)
-	{
-		tmp = *h;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		(*h)->prev = tmp;
-		tmp->next = *h;
-		(*h)->next->prev = NULL;
-		*h = (*h)->next;
-		tmp->next->next = NULL;
-	}
+	tmp = *h;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	(*h)->prev = tmp;
+	tmp->next = *h;
+	(*h)->next->prev = NULL;
+	*h = (*h)->next;
+	tmp->next->next = NULL;
 }
