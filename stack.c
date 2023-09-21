@@ -7,6 +7,6 @@
 void stack_op(stack_t **stack, unsigned int line_number)
 {
 	(void)line_number;
-	mode = 0;
 	(void)stack;
+	mode = 0;
 }
