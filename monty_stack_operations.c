@@ -12,6 +12,10 @@ int is_num(const char *num)
 	if (num[0] == '-')
 	{
 		j = 1;
+		if (num[1] == '\0')
+		{
+			return (-1);
+		}
 	}
 	for (; num[j] != '\0'; j++)
 	{
