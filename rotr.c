@@ -7,19 +7,20 @@
  */
 void rotr(stack_t **h, unsigned int line_number)
 {
-	stack_t *tmp;
+	stack_t *tmp, *last;
 
 	(void) line_number;
 
-	if ((*h)->next != NULL)
+	if (*h && (*h)->next)
 	{
-		tmp = *h;
+	tmp = *h;
 		while (tmp->next != NULL)
 			tmp = tmp->next;
-		(*h)->prev = tmp;
-		tmp->next = *h;
-		tmp->prev->next = NULL;
+		last = tmp->prev;
+		last->next = NULL;
 		tmp->prev = NULL;
-		(*h) = (*h)->prev;
+		tmp->next = *h;
+		(*h)->prev = tmp;
+		*h = tmp;
 	}
 }
