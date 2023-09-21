@@ -11,7 +11,7 @@ void pstr(stack_t **h, unsigned int line_number)
 
 	if (!h || !*h)
 	{
-		printf("L%u: can't pstr, stack empty\n", line_number);
+		fprintf(stderr,"L%u: can't pstr, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp = *h;
