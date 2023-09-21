@@ -26,7 +26,6 @@ int is_num(const char *num)
  * push - adds node
  * @h: head of linked list
  * @line_number: bytecode line number
- * @n: integer
  */
 void push(stack_t **h, unsigned int line_number)
 {
@@ -60,16 +59,6 @@ void push(stack_t **h, unsigned int line_number)
 		new_node->next = NULL;
 	}
 	*h = new_node;
-}
-/**
- * push_adapter - calls push with correct args
- * @stack: stack
- * @line_number: number of line
- * @arg: argument
- */
-void push_adapter(stack_t **stack, unsigned int line_number)
-{
-	push(stack, line_number);
 }
 /**
  * pop - removes node at front

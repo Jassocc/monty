@@ -2,8 +2,9 @@
 
 /**
  * get_op_func - function to select correct operation function
- * @token1: 1st bytecode input (opcode)
- * Return: pointer to correct operation function
+ * @stack: 1st bytecode input (opcode)
+ * @opcode: pointer to correct operation function
+ * @line_number: line number of args
  */
 void get_op_func(stack_t **stack, char *opcode,  unsigned int line_number)
 {
