@@ -9,6 +9,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#define MODE_STACK 0
+#define MODE_QUEUE 1
 /* DATASTRUCTURES */
 
 /**
@@ -26,7 +28,7 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
-
+extern int mode;
 /**
  * struct instruction_s - opcoode and its function
  * @opcode: the opcode
@@ -66,5 +68,6 @@ int add_end_node(stack_t **h, int n);
 void delete_end_node(stack_t **h);
 void free_dlist(stack_t **h);
 void push_adapter(stack_t **stack, unsigned int line_number);
-
+void stack_op(stack_t **stack, unsigned int line_number);
+void queue_op(stack_t **stack, unsigned int line_number);
 #endif

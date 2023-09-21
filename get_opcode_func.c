@@ -24,6 +24,8 @@ void get_op_func(stack_t **stack, char *opcode,  unsigned int line_number)
 		{"rotl", rotl},
 		{"rotr", rotr},
 		{"push", push},
+		{"stack", stack_op},
+		{"queue", queue_op},
 		{NULL, NULL}
 	};
 	int i = 0;

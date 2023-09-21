@@ -1,6 +1,6 @@
 #include "monty.h"
 #include <stdio.h>
-
+int mode;
 /**
  * main - entry into interpreter
  * @argc: argc counter
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	mode = 0;
 	while (fgets(line, sizeof(line), file))
 	{
 		opcode = strtok(line, " \t\n");
