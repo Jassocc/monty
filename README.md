@@ -7,6 +7,8 @@
 * monty_calculator.c --- holds the mathematical operations
 * monty.h --- holds the function prototypes for the interpreter
 * bytecode_interpreter.c --- main bulk of the program
+* bf(folder) --- contains the bf files
+* bytecodes(folder) --- contains the bytecode files
 
 **Compilation Process**
 
