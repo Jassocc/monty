@@ -18,6 +18,6 @@ $ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 
 **Authors**
 
-Colin Earle --- [git](https://github.com/Jassocc)
+Colin Earle
 
-Benjamin Paul Opiyo --- [git](https://github.com/opiyoxbenji)
+Benjamin Paul Opiyo
